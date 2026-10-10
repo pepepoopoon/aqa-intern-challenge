@@ -5,6 +5,7 @@ enum WidgetPageSelectors {
     WIDGET_BODY = '[class^=widgetWrapper] > [class^=widget__]',
     HEADER_TEXT = 'header h5',
     BUTTON_OPEN = '[data-test=openWidget]',
+    BUTTON_CLOSE = '[class^=widgetWrapper] > button[class^=closeBtn]',
     BUTTON_WRITE_TO_US = '[data-test=button_feedback_form]',
     ARTICLE_POPULAR_TITLE = '[class^=popularTitle__]',
     ARTICLE_POPULAR_LIST = `${ARTICLE_POPULAR_TITLE} + ul[class^=articles__]`,
@@ -22,6 +23,10 @@ export class WidgetPage {
 
     async openWidget() {
         return this.wrapper().locator(WidgetPage.selector.BUTTON_OPEN).click();
+    }
+
+    async closeWidget() {
+        return this.wrapper().locator(WidgetPage.selector.BUTTON_CLOSE).click();
     }
 
     async getPopularArticles() {
